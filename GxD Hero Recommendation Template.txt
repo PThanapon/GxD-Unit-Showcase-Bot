@@ -1,0 +1,36 @@
+------
+Hero name : 
+Recommended by : 
+Recommended Artifact : (from most common to niche)
+Recommended Usage : 
+Hero gearing difficulty :star::star::star::star::star: [Up to 5 stars, edit as you see fit, **remove this bracket after done**]    
+
+[Legend : 
+x = preferably ~370gs level stat
+y = 420+gs level stat 
+Only replace x and y, I want the y value to be in bold
+**Remove this entire bracket after filling out**] 
+
+Recommended Stat-lines :
+```Try to follow the values in bold```
+
+Health : (x) - (**y**)
+Def : (x) - (**y**)
+Speed : (x) - (**y**)
+Crit chance : (x) - (**y**)
+Crit Damage : (x) - (**y**)
+Effectiveness : (x) - (**y**)
+Effect Resistance : (x) - (**y**)
+Set(s) : (insert **most** commonly seen sets here)
+Alt sets : (insert basic description of other builds, if applicable) (ping OP in #general for more info)
+Note : 
+
+```Recommended Partners in Draft``` 
+- hero name (Brief explanation as to why)
+- hero name (Brief explanation as to why)
+- hero name (Brief explanation as to why)
+
+```Drafting tips```
+- **Do**
+- **Do not**
+- [any other comments you would like to add, but please keep it concise and tidy] 
