@@ -167,12 +167,30 @@ def get_name(image_path, character_list):
         return "error"
 
     parsed_text = result["ParsedResults"][0]["ParsedText"].strip()
+
+    if parsed_text == "< Hero Info":
+        return hero_info(img)
  
     if parsed_text == "":
         return "Eda Bully"
   
     closest_match = get_closest_match(parsed_text, character_list)
     return closest_match
+
+def hero_info(img):
+    compressed_image_data = compress_image(img)
+    response = requests.post(
+        "https://api.ocr.space/parse/image",
+        files={"filename": ("image.jpg", compressed_image_data)},
+        data={"apikey": OCR_SPACE_API_KEY}
+    )
+    result = response.json()
+    if result["IsErroredOnProcessing"]:
+        print("Error in OCR processing")
+        return "error"
+    parsed_text = result["ParsedResults"][0]["ParsedText"].strip()
+    iend = parsed_text.find("Lv. Max")
+    return parsed_text[:iend].split()[-1]
 
 def save_alias(dct):
     with open("alias.txt", "w") as file:
