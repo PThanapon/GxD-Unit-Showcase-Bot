@@ -8,6 +8,7 @@ ae-GISELLE
 ae-KARINA
 ae-NINGNING
 ae-WINTER
+Afternoon Soak Flan
 Ainos
 Ains
 Ainz Ooal Gown
@@ -18,15 +19,15 @@ Alexa
 All-Rounder Wanda
 Ambitious Tywin
 Amid
-Amiki
 Angel of Light Angelica
 Angelic Montmorancy
-Angelica
 Apocalypse Ravi
+Aram
 Aramintha
 Arbiter Vildred
 Archdemon's Shadow
 Architect Laika
+Argent Waves Hwayoung
 Aria
 Armin
 Arowell
@@ -55,10 +56,12 @@ Blood Blade Karin
 Blood Moon Haste
 Blooming Lidica
 Bomb Model Kanna
+Boss Arunka
 Briar Witch Iseria
 Brieg
 Butcher Corps Inquisitor
 Byblis
+Bystander Hwayoung
 Camilla
 Captain Rikoris
 Carmainerose
@@ -100,6 +103,7 @@ Designer Lilibet
 Destina
 Diene
 Dingo
+Disciplinary Prefect Aria
 Dizzy
 Doll Maker Pearlhorizon
 Dominiel
@@ -124,6 +128,8 @@ Fairytale Tenebria
 Faithless Lidica
 Falconer Kluri
 Fallen Cecilia
+Fenne
+Fenris
 Festive Eda
 Fighter Maya
 Flan
@@ -136,14 +142,17 @@ Glenn
 Gloomyrain
 Godmother
 Great Chief Khawana
+Guard Captain Krau
 Guider Aither
 Gunther
+Harsetti
 Hasol
 Haste
 Hataan
 Hazel
 Helen
 Helga
+Hellion Lua
 Holiday Yufine
 Holy Flame Adin
 Hurado
@@ -153,6 +162,7 @@ Ilynav
 Immortal Wukong
 Inferno Khawazu
 Infinite Horizon Achates
+Inheritor Amiki
 Iseria
 Jack-O'
 Januta
@@ -176,6 +186,7 @@ Kitty Clarissa
 Kizuna AI
 Kluri
 Krau
+Lady Of The Scales
 Laia
 Laika
 Landy
@@ -192,8 +203,8 @@ Lilka
 Lionheart Cermia
 Little Queen Charlotte
 Lone Crescent Bellona
+Lone Wolf Peira
 Lorina
-Lots
 Lua
 Lucy
 Ludwig
@@ -223,6 +234,7 @@ Muwi
 Nahkwol
 Navy Captain Landy
 Nemunas
+New Kid Adin
 New Moon Luna
 Ocean Breeze Luluca
 Operator Sigret
@@ -254,9 +266,11 @@ Rikoris
 Rima
 Rimuru
 Rin
+Rinak
 Riza Hawkeye
 Roaming Warrior Leo
 Roana
+Robin
 Romann
 Roozid
 Rose
@@ -264,6 +278,7 @@ Roy Mustang
 Ruele of Light
 Sage Baal and Sezan
 Savior Adin
+Schniel
 Schuri
 Sea Phantom Politis
 Seaside Bellona
@@ -290,6 +305,7 @@ Specimen Sez
 Specter Tenebria
 Spirit Eye Celine
 Straze
+Successor Taeyou
 Summer Break Charlotte
 Summer's Disciple Alexa
 Summertime Iseria
@@ -308,6 +324,7 @@ Tempest Surin
 Tenebria
 Tieria
 Top Model Luluca
+Tori
 Troublemaker Crozet
 Twisted Eidolon Kayron
 Tywin
@@ -322,7 +339,10 @@ Wanda
 Wanderer Silk
 Wandering Prince Cidd
 Watcher Schuri
+Westwind Executioner Schuri
+Witch of the Mere Tenebria
 Yoonryoung
+Young Senya
 Yufine
 Yulha
 Yuna

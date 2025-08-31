@@ -21,7 +21,6 @@ amid
 amiki
 angel of light angelica, aola
 angelic montmorancy, amomo
-angelica
 apocalypse ravi, aravi
 aramintha
 arbiter vildred, arby
@@ -33,7 +32,7 @@ arunka
 assassin cartuja, fat cat
 assassin cidd, acidd
 assassin coli, acoli
-astromancer elena, ml elena
+astromancer elena, ml elena, alena
 auxiliary lots, alots
 azalea
 baal and sezan
@@ -116,12 +115,12 @@ emilia
 empyrean ilynav, ml ilynav, elynav
 enott
 ervalen
-eternal wanderer ludwig, ml ludwig
+eternal wanderer ludwig, ml ludwig, mudwig
 ezrea
 fairytale tenebria,  ftene
 faithless lidica, flidica
 falconer kluri
-fallen cecilia, fcc
+fallen cecilia, fcc, fceci
 fighter maya, fmaya
 flan
 free spirit tieria
@@ -140,7 +139,8 @@ hataan
 hazel
 helen
 helga
-holiday yufine
+hellion lua, hua, gaki
+holiday yufine, hyufine
 holy flame adin
 hurado
 hwayoung
@@ -149,12 +149,13 @@ ilynav
 immortal wukong, wukong
 inferno khawazu, ricardo
 infinite horizon achates, light achates, lachates
+inheritor amiki, amiki
 iseria
 jack-o'
 januta
 jecht
 jena
-jenua
+jenua, joshua
 judge kise, jkise
 judith
 juni
@@ -172,6 +173,7 @@ kitty clarissa
 kizuna ai
 kluri
 krau
+lady of the scales, lots
 laika
 landy
 last piece karin, lpk
@@ -204,7 +206,7 @@ melany
 melissa
 mercedes
 mercenary helga
-midnight gala lilias, gilias, glilias, gila
+midnight gala lilias, gilias, glilias, gala
 milim
 mirsa
 mistychain
@@ -241,7 +243,7 @@ ravi
 ray, old
 rem
 remnant violet, riolet
-requiem roana, ml roana
+requiem roana, ml roana, rroana
 requiemroar
 researcher carrot
 righteous thief roozid
@@ -257,7 +259,7 @@ roozid
 rose
 roy mustang
 ruele of light, ruele, actually destina
-sage baal and sezan
+sage baal and sezan, balls, baal
 savior adin
 schuri
 sea phantom politis, solitis, spp
@@ -275,7 +277,7 @@ shooting star achates, ssachates
 shuna
 sigret
 silk
-silver blade aramintha, ml ara
+silver blade aramintha, ml ara, sba
 silvertide christy
 sinful angelica, singelica, singie
 sol badguy
@@ -314,7 +316,8 @@ violet, luluca's bf
 vivian
 wanda
 wanderer silk
-watcher schuri, wschuri
+watcher schuri, wschuri, watcher, light schuri
+westwind executioner schuri, dark schuri
 yoonryoung
 yufine
 yulha
@@ -325,3 +328,9 @@ zeno
 zerato
 zio
 urban shadow choux, shoux, ml rat
+afternoon soak flan, assflan, asflan
+young senya, yenya
+successor taeyou, ml taeyou
+boss arunka, barunka
+witch of the mere tenebria, light tene
+festive eda, feda

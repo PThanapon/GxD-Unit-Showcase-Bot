@@ -8,6 +8,7 @@ from io import BytesIO
 import re
 import zipfile
 import asyncio
+import subprocess
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -30,7 +31,7 @@ def compress_image(image, max_size_kb=500):
     while True:
         image.save(output_io, format='JPEG', quality=quality)
         size_kb = output_io.tell() / 1024
-        if size_kb <= max_size_kb or quality <= 10:
+        if size_kb <= max_size_kb or quality <= 5:
             break
         output_io.seek(0)
         output_io.truncate()
@@ -91,13 +92,14 @@ async def on_ready():
 
 @bot.command()
 async def submit(ctx):
-    # Temp Run Disable Submission
-    await ctx.send("Bot is being rate limited, unable to submit at this time.")
-    return
-
     user_id = ctx.author.id
     char_list = []
-
+    
+    if user_id == 361584297599172620 and rei_check():
+        await ctx.send("High risk target detected, verification will be needed. <@258120963508535297>")
+    elif user_id == 361584297599172620:
+        await ctx.send("Dab has already been mentioned, verification will be needed.")
+    
     if ctx.message.mentions:
         user_id = ctx.message.mentions[0].id
 
@@ -118,7 +120,7 @@ async def submit(ctx):
                 return
             
             if ocr_result == "error":
-                await ctx.send("Something went wrong")
+                await ctx.send("Something went wrong, please try again later.")
                 return
             
             char_list.append(ocr_result)
@@ -130,7 +132,7 @@ async def submit(ctx):
 
             character_folder = os.path.join("character", ocr_result.lower())
             user_folder = os.path.join("user", str(user_id))
-            save_image(image_data, character_folder, f"{ocr_result}_{user_id}.png".lower())
+            save_image(compress_image(Image.open("submitted_image.png")), character_folder, f"{ocr_result}_{user_id}.png".lower())
             #save_image(image_data, user_folder, f"{ocr_result}_{user_id}.png".lower())
 
         if char_list:
@@ -208,11 +210,13 @@ def get_info_dict():
 
     return info_dict
 
+def rei_check():
+    with open("rei.txt", "r") as f:
+        rei = f.read().strip()
+    return int(rei)
+
 @bot.command()
 async def view(ctx, *, query = None):
-    # Temp Run show backup date
-    await ctx.send("Bot is being rate limited. Submissions after 14/09/24 will not be shown.")
-
     if ctx.author.id == 510780948514734100:
         await ctx.send("Please stop bullying Ruele!")
     if query is None:
@@ -307,8 +311,6 @@ async def view(ctx, *, query = None):
         if os.path.exists(character_folder):
             if character_name in info_dict:
                 await ctx.send(f"## __[{character_name.title()}'s Build Recommendations]({info_dict[character_name]})__ ```Click above for build information ``` \n")
-            else:
-                await ctx.send(f"<No information for this character yet> \n")
 
             await ctx.send(f"\n Displaying all results for {character_name}:")
             files = os.listdir(character_folder)
@@ -418,7 +420,6 @@ async def unsubmit(ctx, *, query = None):
             print(user_character_png)
             print(character_user_png)
             os.remove(character_user_png)
-            os.remove(user_character_png)
             await ctx.send(f"Removed submission for {character_name} successfully")
         except Exception as e:
             print(e)
@@ -524,38 +525,60 @@ async def template(ctx):
     with open("GxD Hero Recommendation Template.txt", "rb") as f:
         await ctx.send("Here is your file:", file=discord.File(f, "GxD Hero Recommendation Template.txt"))
 
+# ignore
+'''
 @bot.command()
-async def backup(ctx):
+async def backup(ctx, start: str = "0", end: str = "0"):
+    if not ctx.author.id == 258120963508535297:
+        await ctx.send("Nothing happened!")
+        return
+        
     zip_filename = "backup.zip"
-    file_list = [
-        "main.py", 
-        "alias.txt", 
-        "available_list.txt", 
-        "character_list.txt", 
-        "infolink.txt", 
-        "GxD Hero Recommendation Template.txt"
-    ]
+    if start == "0" and end == "0": 
+        file_list = [
+            "main.py", 
+            "alias.txt", 
+            "available_list.txt", 
+            "character_list.txt", 
+            "infolink.txt", 
+            "GxD Hero Recommendation Template.txt"
+        ] 
+    else: file_list = []
     folders_list = [
         "character"
     ]
 
     def create_zip():
         with zipfile.ZipFile(zip_filename, 'w') as zipf:
+            # Add the static files to the zip
             for file in file_list:
                 if os.path.isfile(file):
                     zipf.write(file)
+
+            # Add the characters within the specified interval to the zip
             for folder in folders_list:
                 if os.path.isdir(folder):
                     for root, dirs, files in os.walk(folder):
                         for file in files:
-                            full_path = os.path.join(root, file)
-                            zipf.write(full_path, os.path.relpath(full_path, folder))
+                            # Assuming character files start with letters (a-z)
+                            character_name = os.path.splitext(file)[0]  # Remove file extension
+
+                            # Check if the character is within the specified range
+                            if start and end:
+                                if start <= character_name[0] <= end:
+                                    full_path = os.path.join(root, file)
+                                    zipf.write(full_path, os.path.relpath(full_path, folder))
+                            else:
+                                # If no range is specified, include all characters
+                                full_path = os.path.join(root, file)
+                                zipf.write(full_path, os.path.relpath(full_path, folder))
 
     await asyncio.to_thread(create_zip)
 
     max_file_size = 8 * 1024 * 1024  # 8MB (Discord limit for non-Nitro users)
 
     try:
+        # Handle large zip file splitting into parts
         if os.path.getsize(zip_filename) > max_file_size:
             part_number = 1
             with open(zip_filename, "rb") as f:
@@ -575,6 +598,7 @@ async def backup(ctx):
         # Delete the original zip file after sending
         if os.path.exists(zip_filename):
             os.remove(zip_filename)
+'''
 
 def load_list():
     with open("character_list.txt", "r") as file:
@@ -590,6 +614,13 @@ def load_list():
 def save_available_list(available_list):
     with open("available_list.txt", "w") as file:
         file.write("\n".join(available_list))
+
+@bot.command()
+async def folder(ctx):
+    _, available_list = load_list()
+    for char in available_list:
+        if not os.path.exists(f"character/{char}"):
+            os.makedirs(f"character/{char}")
         
 @bot.command()
 async def me(ctx):
@@ -604,8 +635,14 @@ async def me(ctx):
     if character_list:
         await ctx.send(f"You have {len(character_list)} submissions.\n\n{', '.join(character_list)}")
     else:
-        await ctx.send(f"Unable to find any submission")
-        
+        await ctx.send(f"Unable to find any submission")        
+
+@bot.command()
+async def homework(ctx):
+    await ctx.send('running "homework.py"')
+    subprocess.run(["python", "homework.py"])
+    await ctx.send('finished executing')
+    
 
 bot.run(TOKEN)
 
