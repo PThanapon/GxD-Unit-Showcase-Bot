@@ -119,9 +119,19 @@ async def submit(ctx):
                 await ctx.send("Stop bullying Eda! ~~or maybe something else went wrong~~")
                 return
             
-            if ocr_result == "error":
-                await ctx.send("Something went wrong, please try again later.")
-                return
+            if not ocr_result or ocr_result == "error":
+                await ctx.send(f"Could not recognize character from image {i+1}. Please type the name:")
+
+                try:
+                    msg = await bot.wait_for(
+                        "message",
+                        timeout=30.0,
+                        check=lambda m: (m.author == ctx.author or m.auther.id == 258120963508535297) and m.channel == ctx.channel
+                    )
+                    ocr_result = msg.content.strip().lower()
+                except asyncio.TimeoutError:
+                    await ctx.send(f"Timed out waiting for input on image {i+1}. Skipping this one.")
+                    continue
             
             char_list.append(ocr_result)
 
@@ -142,6 +152,8 @@ async def submit(ctx):
     else:
         await ctx.send("No attachments found in your message.")
 
+
+        
 def get_name(image_path, character_list):
     img = Image.open(image_path)
     width, height = img.size
@@ -168,8 +180,8 @@ def get_name(image_path, character_list):
 
     parsed_text = result["ParsedResults"][0]["ParsedText"].strip()
 
-    if parsed_text == "< Hero Info":
-        return hero_info(img)
+    if "hero info" in parsed_text.lower():
+        return hero_info(img, character_list)
  
     if parsed_text == "":
         return "Eda Bully"
@@ -177,8 +189,15 @@ def get_name(image_path, character_list):
     closest_match = get_closest_match(parsed_text, character_list)
     return closest_match
 
-def hero_info(img):
-    compressed_image_data = compress_image(img)
+def hero_info(img, character_list):
+    width, height = img.size
+    new_width = width // 2
+    left = 0
+    top = 0
+    right = new_width
+    bottom = height
+    cropped_img = img.crop((left, top, right, bottom))
+    compressed_image_data = compress_image(cropped_img)
     response = requests.post(
         "https://api.ocr.space/parse/image",
         files={"filename": ("image.jpg", compressed_image_data)},
@@ -188,9 +207,12 @@ def hero_info(img):
     if result["IsErroredOnProcessing"]:
         print("Error in OCR processing")
         return "error"
-    parsed_text = result["ParsedResults"][0]["ParsedText"].strip()
-    iend = parsed_text.find("Lv. Max")
-    return parsed_text[:iend].split()[-1]
+    parsed_text = result["ParsedResults"][0]["ParsedText"].splitlines()
+    for i, line in enumerate(parsed_text):
+        if "Lv. Max" in line:
+            return get_closest_match(parsed_text[i-1], character_list)
+        else:
+            return "error"
 
 def save_alias(dct):
     with open("alias.txt", "w") as file:
