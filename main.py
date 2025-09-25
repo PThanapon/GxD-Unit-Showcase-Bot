@@ -125,10 +125,10 @@ async def submit(ctx):
                 try:
                     msg = await bot.wait_for(
                         "message",
-                        timeout=30.0,
-                        check=lambda m: (m.author == ctx.author or m.auther.id == 258120963508535297) and m.channel == ctx.channel
+                        timeout=60.0,
+                        check=lambda m: (m.author == ctx.author or m.author.id == 258120963508535297) and m.channel == ctx.channel
                     )
-                    ocr_result = msg.content.strip().lower()
+                    ocr_result = get_closest_match(msg.content.strip().lower(), character_list)
                 except asyncio.TimeoutError:
                     await ctx.send(f"Timed out waiting for input on image {i+1}. Skipping this one.")
                     continue
