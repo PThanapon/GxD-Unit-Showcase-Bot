@@ -211,8 +211,7 @@ def hero_info(img, character_list):
     for i, line in enumerate(parsed_text):
         if "Lv. Max" in line:
             return get_closest_match(parsed_text[i-1], character_list)
-        else:
-            return "error"
+    return "error"
 
 def save_alias(dct):
     with open("alias.txt", "w") as file:
